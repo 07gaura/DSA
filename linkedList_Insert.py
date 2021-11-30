@@ -30,8 +30,38 @@ class LinkedList:
             while n.ref is not None:
                 n = n.ref
             n.ref = new_node
+            
+    def length(self):
+        n = self.head
+        count=0
+        while n is not None:
+            n = n.ref
+            count+=1
+        return count
+        
+    def add_position(self, data, pos):
+        new_node = Node(data)
+        count = 1
+        if self.head is None:
+            self.head = new_node
+        elif pos == 1:
+            new_node.ref = self.head
+            self.head = new_node
+        elif self.length()>=pos:
+            n = self.head
+            while n is not None:
+                if count == pos-1:
+                    break
+                n = n.ref
+                count +=1
+            new_node.ref = n.ref
+            n.ref = new_node
+        else:
+            print("Wrong position")
+        
                 
 ll1 = LinkedList()
 ll1.add_begin(20)
 ll1.add_end(10)
+ll1.add_position(30,2)
 ll1.print_ll()
