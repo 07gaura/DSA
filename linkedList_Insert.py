@@ -59,6 +59,18 @@ class LinkedList:
         else:
             print("Wrong position")
         
+        def add_after(self, data,x):
+            n = self.head
+            while n is not None:
+                if x == n.data:
+                    break
+                n = n.ref
+            if n is None:
+                print("Node is not present in list")
+            else:
+                new_node = Node(data)
+                new_node.ref = n.ref
+                n.ref = new_node
                 
 ll1 = LinkedList()
 ll1.add_begin(20)
