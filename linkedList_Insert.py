@@ -95,6 +95,23 @@ class LinkedList:
             n = n.ref
             count +=1
         n.ref = None
+        
+    def delet_val(self, x):
+        if self.head is None:
+            print("print cant delete ll is Empty")
+            return
+        if x == self.head.data
+           self.head = self.head.ref
+           return 
+       n = n.ref
+       while n.ref is not None:
+           if x = n.ref.data:
+               break
+           n = n.ref
+        if n.ref is None:
+            print("Node is not present")
+        else:
+            n.ref = n.ref.ref
 ll1 = LinkedList()
 ll1.add_begin(20)
 ll1.add_end(10)
