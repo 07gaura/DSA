@@ -112,6 +112,17 @@ class LinkedList:
             print("Node is not present")
         else:
             n.ref = n.ref.ref
+            
+    def reverse(self):
+        n = self.head;
+        p = None
+        while n is not None:
+            temp = n.ref
+            n.ref = p
+            p = n.data
+            n = temp
+        self.head = p
+        
 ll1 = LinkedList()
 ll1.add_begin(20)
 ll1.add_end(10)
