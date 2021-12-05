@@ -28,4 +28,18 @@ class doublyll:
                 print(n.data)
                 n = n.pref
             
+    def insert_empty(self, data):
+        if self.head is None:
+            new_node = Node(data)
+            self.head = new_node
+        else:
+            print("Linked List is not Empty")
             
+    def add_begin(self,data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.ref = self.head
+            self.head.pref = new_node
+            self.head = new_node
