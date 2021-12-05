@@ -43,3 +43,13 @@ class doublyll:
             new_node.ref = self.head
             self.head.pref = new_node
             self.head = new_node
+            
+    def insert_end(self,data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            while n.ref is not None:
+                n = n.ref
+            n.ref = new_node
+            new_node.pref = n
