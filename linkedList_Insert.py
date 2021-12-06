@@ -123,6 +123,25 @@ class LinkedList:
             n = temp
         self.head = p
         
+    def search(self, x):
+        n = self.head
+        count = 0
+        while n is not None:
+            if n.data == x:
+                return
+            n = n.ref
+            count +=1
+        return "nothing found"
+        
+    def printNthFromLast(self,x):
+        n = self.head
+        length = 0
+        while n is not None:
+            if length == x:
+                return n.data
+            n = n.ref
+            length+=1
+                
 ll1 = LinkedList()
 ll1.add_begin(20)
 ll1.add_end(10)
