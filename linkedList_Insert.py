@@ -141,11 +141,24 @@ class LinkedList:
                 return n.data
             n = n.ref
             length+=1
-                
+    
+    def sortLinkedList():
+        index = None
+        new_node = self.head
+        if(head is None):
+            return
+        else:
+            while new_node!=null:
+                index = new_node.ref
+                while index is not None:
+                    if index.data>new_node.data:
+                        temp = new_node.data
+                        new_node.data = index.data
+                        index.data = temp
+                    index = index.ref
+                new_node = new_node.ref
 ll1 = LinkedList()
 ll1.add_begin(20)
 ll1.add_end(10)
 ll1.add_begin(5)
 #ll1.print_ll()
-ll1.delete_last()
-ll1.print_ll()
