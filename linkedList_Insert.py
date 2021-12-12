@@ -100,14 +100,14 @@ class LinkedList:
         if self.head is None:
             print("print cant delete ll is Empty")
             return
-        if x == self.head.data
+        if x == self.head.data:
            self.head = self.head.ref
            return 
-       n = n.ref
-       while n.ref is not None:
-           if x = n.ref.data:
-               break
-           n = n.ref
+        n = self.head
+        while n.ref is not None:
+            if x == n.ref.data:
+                break
+            n = n.ref
         if n.ref is None:
             print("Node is not present")
         else:
@@ -157,8 +157,26 @@ class LinkedList:
                         index.data = temp
                     index = index.ref
                 new_node = new_node.ref
+                
+    def removeDuplicateSorted(self):
+        if self.length() == 1:
+            print("Nothing to remove")
+        elif self.head is None:
+            return
+        else:
+            new_node = self.head
+            while new_node.ref is not None:
+                if(new_node.data == new_node.ref.data):
+                    temp = new_node.ref.ref
+                    new_node.ref = temp
+                else:
+                    new_node = new_node.ref
+        return self.head
+                
 ll1 = LinkedList()
+ll1.add_begin(20)
 ll1.add_begin(20)
 ll1.add_end(10)
 ll1.add_begin(5)
-#ll1.print_ll()
+ll1.removeDuplicateSorted()
+ll1.print_ll()
