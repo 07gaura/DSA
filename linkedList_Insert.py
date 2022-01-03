@@ -172,6 +172,16 @@ class LinkedList:
                 else:
                     new_node = new_node.ref
         return self.head
+        
+    def detect_loop(self):
+        slow = self.head
+        fast = self.head
+        while(slow != None and fast.next != None):
+            slow = slow.next
+            fast = fast.next.next
+            if(slow == fast):
+                return "Loop Detected"
+        return "Loop not Detected"
                 
 ll1 = LinkedList()
 ll1.add_begin(20)
