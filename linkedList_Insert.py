@@ -182,6 +182,14 @@ class LinkedList:
             if(slow == fast):
                 return "Loop Detected"
         return "Loop not Detected"
+        
+    def middle(self):
+        slow = self.head
+        fast = self.head
+        while(slow!=None and fast.next!=None):
+            slow = slow.next
+            fast = fast.next.next
+        return slow
                 
 ll1 = LinkedList()
 ll1.add_begin(20)
