@@ -53,3 +53,18 @@ class doublyll:
                 n = n.ref
             n.ref = new_node
             new_node.pref = n
+            
+            
+    def delete_end(self):
+        n = self.head
+        while n.nref.nref is not None:
+            n = n.nref
+        n.nref = None
+        
+dll = doublyll()
+dll.add_begin(10)
+dll.add_begin(20)
+dll.add_begin(10)
+dll.delete_end()
+dll.print_ll()
+         
