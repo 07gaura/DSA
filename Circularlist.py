@@ -35,11 +35,21 @@ class circularList:
                 print(n.data)
                 n = n.ref
             print(n.data)
+    
+    def delete_first(self):
+        
+        if self.last is None:
+            return "List is empty"
+        elif self.last.ref == self.last:
+            self.last = None
+            return
+        else:
+            n = self.last.ref
+            self.last.ref = self.last.ref.ref
+            n.ref = None
             
 cl = circularList()
-cl.add_last(60)
-cl.add_begin(20)
-cl.add_begin(30)
-cl.add_begin(40)
-cl.add_last(50)
+cl.add_last(40)
+
+print(cl.delete_first())
 cl.printCL()
