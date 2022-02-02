@@ -61,7 +61,33 @@ def getSuccessor(root):
         temp = temp.left
     return temp
     
-        
+def getSum(root):
+    if root is None:
+        return 0
+    return root.val + getSum(root.right)+getSum(root.left)
+
+def getLeafNodeCount(root):
+    if root is None:
+        return 0
+    if root.left is None and root.right is None:
+        return 1
+    return getLeafNodeCount(root.left)+getLeafNodeCount(root.right)
+    
+def getNodeCount(root):
+    if root is None:
+        return 0
+    return getNodeCount(root.left)+getNodeCount(root.right)
+    
+def heightOfTree(root):
+    if root is None:
+        return -1
+    no=heightOfTree(root.left)
+    no1=heightOfTree(root.right)
+    if no>no1:
+        return no+1
+    else:
+        return no1+1
+    
 root = None
 root = insert(root, 50)
 root = insert(root, 30)
@@ -70,7 +96,7 @@ root = insert(root, 40)
 root = insert(root, 70)
 root = insert(root, 60)
 root = insert(root, 80)
-root = delete(root, 20)
-root = delete(root, 50)
+
 # Print inoder traversal of the BST
 inOrder(root)
+print(heightOfTree(root))
