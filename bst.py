@@ -87,6 +87,23 @@ def heightOfTree(root):
         return no+1
     else:
         return no1+1
+
+def leveOrderTraversal(root):
+    if root is None:
+        return
+    hieght = heightOfTree(root)
+    for i in range(0,hieght+1):
+        Traverse(root,i+1)
+        print("-----")
+    
+def Traverse(root,h):
+    if root is None:
+        return
+    if h==1:
+        print(root.val)
+        return
+    Traverse(root.left,h-1)
+    Traverse(root.right,h-1)
     
 root = None
 root = insert(root, 50)
@@ -98,5 +115,5 @@ root = insert(root, 60)
 root = insert(root, 80)
 
 # Print inoder traversal of the BST
-inOrder(root)
-print(heightOfTree(root))
+
+leveOrderTraversal(root)
