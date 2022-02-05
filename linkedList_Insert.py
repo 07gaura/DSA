@@ -190,6 +190,14 @@ class LinkedList:
             slow = slow.next
             fast = fast.next.next
         return slow
+    
+    def recusionReverse(self,head):
+        if head is None or head.next is None:
+            return head
+        res = recusionReverse(self.head.next)
+        head.next.next = head
+        head.next = None
+        return res
                 
 ll1 = LinkedList()
 ll1.add_begin(20)
