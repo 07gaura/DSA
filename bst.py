@@ -104,16 +104,64 @@ def Traverse(root,h):
         return
     Traverse(root.left,h-1)
     Traverse(root.right,h-1)
-    
-root = None
-root = insert(root, 50)
-root = insert(root, 30)
-root = insert(root, 20)
-root = insert(root, 40)
-root = insert(root, 70)
-root = insert(root, 60)
-root = insert(root, 80)
 
+def levelOrder(root):
+    if root is None:
+        return 
+    queue=[]
+    queue.append(root)
+    while(len(queue)>0):
+        print(queue[0].data)
+        n = queue.pop(0)
+        if n.left is not None:
+            queue.append(n.left)
+        if n.right is not None:
+            queue.append(n.right)
+    
+def leftView(root):
+    if root is None:
+        return
+    queue=[]
+    queue.append(root)
+    while(len(queue)>0):
+        n=len(queue)
+        for i in range(1,n+1):
+            temp = queue[0]
+            queue.pop(0)
+            if(i==1):
+                print(temp.val)
+            if temp.left is not None:
+                queue.append(temp.left)
+            if temp.right is not None:
+                queue.append(temp.right)
+    
+def rightView(root):
+    if root is None:
+        return
+    queue=[]
+    queue.append(root)
+    while(len(queue)>0):
+        n=len(queue)
+        for i in range(1,n+1):
+            temp = queue[0]
+            queue.pop(0)
+            if(i==2):
+                print(temp.val)
+            if temp.left is not None:
+                queue.append(temp.left)
+            if temp.right is not None:
+                queue.append(temp.right)
+root = None
+root = insert(root, 10)
+root = insert(root, 2)
+root = insert(root, 3)
+root = insert(root, 7)
+root = insert(root, 8)
+root = insert(root, 15)
+root = insert(root, 12)
+root = insert(root, 14)
 # Print inoder traversal of the BST
 
-leveOrderTraversal(root)
+leftView(root)
+print("---------")
+rightView(root)
