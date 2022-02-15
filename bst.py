@@ -151,6 +151,31 @@ def rightView(root):
                 queue.append(temp.left)
             if temp.right is not None:
                 queue.append(temp.right)
+                
+def levelOrderSpiral(root):
+    if root is None:
+        return
+    s1=[]
+    s2=[]
+    s1.append(root)
+    while(len(s1)>0 or len(s2)>0):
+        n1=len(s1)
+        
+        for i in range(0,n1):
+            temp=s1.pop(0)
+            print(temp.val)
+            if temp.left is not None:
+                s2.append(temp.left)
+            if temp.right is not None:
+                s2.append(temp.right)
+        n2=len(s2)
+        for i in range(0,n2):
+            temp=s2.pop(0)
+            print(temp.val)
+            if temp.left is not None:
+                s1.append(temp.left)
+            if temp.right is not None:
+                s1.append(temp.right)
 root = None
 root = insert(root, 10)
 root = insert(root, 2)
@@ -162,6 +187,5 @@ root = insert(root, 12)
 root = insert(root, 14)
 # Print inoder traversal of the BST
 
-leftView(root)
 print("---------")
-rightView(root)
+levelOrderSpiral(root)
