@@ -157,10 +157,11 @@ def levelOrderSpiral(root):
         return
     s1=[]
     s2=[]
+    count=1
     s1.append(root)
     while(len(s1)>0 or len(s2)>0):
         n1=len(s1)
-        
+        print("level ",count)
         for i in range(0,n1):
             temp=s1.pop(0)
             print(temp.val)
@@ -176,6 +177,35 @@ def levelOrderSpiral(root):
                 s1.append(temp.left)
             if temp.right is not None:
                 s1.append(temp.right)
+        count+=1
+        
+def givenLevelOrderSpiral(root,index1,index2):
+    if root is None:
+        return
+    s1=[]
+    s2=[]
+    count=1
+    s1.append(root)
+    while(len(s1)>0 or len(s2)>0):
+        n1=len(s1)
+        for i in range(0,n1):
+            temp=s1.pop(0)
+            if index1<=count and index2>=count:
+                print(temp.val)
+            if temp.left is not None:
+                s2.append(temp.left)
+            if temp.right is not None:
+                s2.append(temp.right)
+        n2=len(s2)
+        for i in range(0,n2):
+            if index1<=count and index2>=count:
+                temp=s2.pop(0)
+            print(temp.val)
+            if temp.left is not None:
+                s1.append(temp.left)
+            if temp.right is not None:
+                s1.append(temp.right)
+        count+=1
 root = None
 root = insert(root, 10)
 root = insert(root, 2)
@@ -186,6 +216,6 @@ root = insert(root, 15)
 root = insert(root, 12)
 root = insert(root, 14)
 # Print inoder traversal of the BST
-
+givenLevelOrderSpiral(root,1,2)
 print("---------")
 levelOrderSpiral(root)
