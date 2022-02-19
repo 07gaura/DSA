@@ -3,6 +3,7 @@ class Node:
         self.val = val
         self.left = None
         self.right = None
+        self.height=None
 
 def insert(root,data):
     if root is None:
@@ -206,6 +207,56 @@ def givenLevelOrderSpiral(root,index1,index2):
             if temp.right is not None:
                 s1.append(temp.right)
         count+=1
+    
+def TopView(root):
+    if root is None:
+        return
+    queue=[]
+    mydicts=dict()
+    hd=0
+    root.height = hd
+    queue.append(root)
+    
+    while len(queue):
+        temp = queue.pop(0)
+        hd = temp.height
+        
+        if hd not in mydicts:
+            mydicts[hd] = temp.val
+        
+        if temp.left is not None:
+            temp.left.height = hd-1
+            queue.append(temp.left)
+        if temp.right is not None:
+            temp.right.height = hd+1
+            queue.append(temp.right)
+            
+    print(mydicts)
+    
+def BottomView(root):
+    if root is None:
+        return
+    queue=[]
+    mydicts=dict()
+    hd=0
+    root.height = hd
+    queue.append(root)
+    
+    while len(queue):
+        temp = queue.pop(0)
+        hd = temp.height
+        
+        mydicts[hd] = temp.val
+        
+        if temp.left is not None:
+            temp.left.height = hd-1
+            queue.append(temp.left)
+        if temp.right is not None:
+            temp.right.height = hd+1
+            queue.append(temp.right)
+            
+    print(mydicts)
+    
 root = None
 root = insert(root, 10)
 root = insert(root, 2)
@@ -218,4 +269,6 @@ root = insert(root, 14)
 # Print inoder traversal of the BST
 givenLevelOrderSpiral(root,1,2)
 print("---------")
-levelOrderSpiral(root)
+TopView(root)
+print("---------")
+BottomView(root)
