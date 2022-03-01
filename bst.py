@@ -257,6 +257,25 @@ def BottomView(root):
             
     print(mydicts)
     
+def maxWidth(root):
+    if root is None:
+        return
+    queue=[]
+    queue.append(root)
+    maxs=0
+    count=1
+    while len(queue):
+        count=len(queue)
+        maxs = max(maxs,count)
+        while count!=0:
+            temp = queue.pop()
+            count-=1
+            if temp.left is not None:
+                queue.insert(0,temp.left)
+            if temp.right is not None:
+                queue.insert(0,temp.right)
+    print(maxs)
+    
 root = None
 root = insert(root, 10)
 root = insert(root, 2)
@@ -269,6 +288,4 @@ root = insert(root, 14)
 # Print inoder traversal of the BST
 givenLevelOrderSpiral(root,1,2)
 print("---------")
-TopView(root)
-print("---------")
-BottomView(root)
+maxWidth(root)
