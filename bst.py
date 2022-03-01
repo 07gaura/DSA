@@ -276,6 +276,30 @@ def maxWidth(root):
                 queue.insert(0,temp.right)
     print(maxs)
     
+def buildTree(root):
+    if root is None:
+        return
+    nodes = []
+    ittrNodes(root,nodes)
+    return buildBalanceTree(nodes,0,len(nodes)-1)
+    
+def ittrNodes(root,nodes):
+    if root is None:
+        return 
+    ittrNodes(root.left,nodes)
+    nodes.append(root)
+    ittrNodes(root.right,nodes)
+    
+def buildBalanceTree(nodes,start,end):
+    if start>end:
+        return None
+    mid = (end + start)//2
+    node = nodes[mid]
+    #print(node.val)
+    node.left=buildBalanceTree(nodes,start,mid-1)
+    node.right=buildBalanceTree(nodes,mid+1,end)
+    return node
+    
 root = None
 root = insert(root, 10)
 root = insert(root, 2)
@@ -285,7 +309,6 @@ root = insert(root, 8)
 root = insert(root, 15)
 root = insert(root, 12)
 root = insert(root, 14)
-# Print inoder traversal of the BST
-givenLevelOrderSpiral(root,1,2)
-print("---------")
-maxWidth(root)
+
+root = buildTree(root)
+inOrder(root)
